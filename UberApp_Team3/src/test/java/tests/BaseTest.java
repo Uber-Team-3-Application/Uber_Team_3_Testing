@@ -4,12 +4,16 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 
 public class BaseTest {
 
     public static WebDriver driver;
 
-    @BeforeAll
+    @BeforeSuite
     public void initDriver(){
 
         System.setProperty("WebDriver.chrome.driver",
@@ -20,7 +24,7 @@ public class BaseTest {
         driver.manage().window().maximize();
     }
 
-    @AfterAll
+    @AfterSuite
     public void quitDriver(){
         driver.quit();
     }
