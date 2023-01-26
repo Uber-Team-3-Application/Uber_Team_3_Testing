@@ -1,6 +1,6 @@
 package tests;
 
-import org.junit.Assert;
+import helper.Helper;
 import org.testng.annotations.Test;
 import pages.*;
 
@@ -38,6 +38,9 @@ public class LoginTest extends BaseTest{
         assertTrue(adminPage.containsAdminNavbarElement());
         assertTrue(adminPage.containsUserLogoutButton());
 
+        Helper.takeScreenshoot(driver, "admin_page");
+
+
         adminPage.logout();
         assertEquals("Already have an Account?", loginPage.getMainParagraphText());
     }
@@ -53,8 +56,11 @@ public class LoginTest extends BaseTest{
         assertTrue(passengerPage.containsOrderRideButton());
         assertTrue(passengerPage.containsUserLogoutButton());
 
+        Helper.takeScreenshoot(driver, "passenger_page");
+
         passengerPage.logout();
         assertEquals("Already have an Account?", loginPage.getMainParagraphText());
+
 
     }
 
@@ -70,6 +76,8 @@ public class LoginTest extends BaseTest{
         assertTrue(driverPage.containsToggleActivity());
         assertTrue(driverPage.containsUserLogoutButton());
 
+        Helper.takeScreenshoot(driver, "driver_page");
+
         driverPage.logout();
         assertEquals("Already have an Account?", loginPage.getMainParagraphText());
 
@@ -82,6 +90,8 @@ public class LoginTest extends BaseTest{
         assertEquals("Already have an Account?", loginPage.getMainParagraphText());
         loginPage.login("blatruc@gmail.com", "lozinka123");
         assertTrue(loginPage.isLoginInvalid());
+        Helper.takeScreenshoot(driver, "invalid_data_page");
+
 
     }
 
