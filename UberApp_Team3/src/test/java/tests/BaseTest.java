@@ -20,10 +20,15 @@ public class BaseTest {
     @BeforeSuite
     public void initDriver(){
 
-        System.setProperty("WebDriver.chrome.driver",
-                "C:\\Users\\pc\\Desktop\\GIT\\Uber_Team_3_Testing\\UberApp_Team3\\chromedriver.exe");
+        // WINDOWS
+//      System.setProperty("WebDriver.chrome.driver",
+//                "C:\\Users\\pc\\Desktop\\GIT\\Uber_Team_3_Testing\\UberApp_Team3\\chromedriver.exe");
+//      System.setProperty("webdriver.edge.driver", "C:\\Users\\pc\\Desktop\\GIT\\Uber_Team_3_Testing\\UberApp_Team3\\msedgedriver.exe");
 
-        System.setProperty("webdriver.edge.driver", "C:\\Users\\pc\\Desktop\\GIT\\Uber_Team_3_Testing\\UberApp_Team3\\msedgedriver.exe");
+        // MAC-OS
+        System.setProperty("WebDriver.chrome.driver", "chromedriver");
+        System.setProperty("webdriver.edge.driver", "msedgedriver");
+
         EdgeOptions options = new EdgeOptions();
         driver2 = new EdgeDriver(options);
 
