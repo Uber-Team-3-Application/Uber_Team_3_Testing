@@ -30,16 +30,27 @@ public class OrderRideTest extends BaseTest{
         page.openLoginPage();
         loginAs_Passenger();
 
-       // orderARideInvalidInput();
-        //orderARideNoDriver();
+        orderARideInvalidInput();
+//        orderARideNoDriver();
         loginAs_Driver();
-         orderARide();
+        orderARide();
+        acceptRide();
+    }
+
+    @Test(testName = "Accept a ride", priority = 5)
+    private void acceptRide() {
+        DriverPage driverPage = new DriverPage(driver2);
+        driverPage.acceptRide();
+        driverPage.startRide();
+        driverPage.endRide();
+        driverPage.logout();
     }
 
     @Test(testName = "Order a ride", priority = 4)
     private void orderARide() {
         PassengerPage passengerPage = new PassengerPage(driver);
         passengerPage.orderARide();
+        Helper.takeScreenshoot(driver, "ride_ordered");
     }
 
     @Test(testName = "Order a ride no driver", priority = 3)
@@ -47,7 +58,9 @@ public class OrderRideTest extends BaseTest{
         PassengerPage passengerPage = new PassengerPage(driver);
         passengerPage.orderARideNoDriver();
         passengerPage.refresh();
+        Helper.takeScreenshoot(driver, "ride_declined");
     }
+
     @Test(testName = "Order a ride wrong input", priority = 2)
     private void orderARideInvalidInput() {
         PassengerPage passengerPage = new PassengerPage(driver);
@@ -62,9 +75,10 @@ public class OrderRideTest extends BaseTest{
     }
 
     public void loginAs_Driver(){
+        HomePage page = new HomePage(driver2);
+        page.openLoginPage();
         driver2.manage().window().maximize();
         LoginPage loginPage = new LoginPage(driver2);
         loginPage.login(DRIVER_EMAIL, DRIVER_PASSWORD);
-        driver2.manage().window().setPosition(new Point(-2000, 0));
     }
 }

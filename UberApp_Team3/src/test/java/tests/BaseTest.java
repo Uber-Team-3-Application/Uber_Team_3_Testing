@@ -23,9 +23,9 @@ public class BaseTest {
         System.setProperty("WebDriver.chrome.driver",
                 "C:\\Users\\pc\\Desktop\\GIT\\Uber_Team_3_Testing\\UberApp_Team3\\chromedriver.exe");
 
-        System.setProperty("webdriver.edge.driver", "C:\\Users\\pc\\Desktop\\GIT\\Uber_Team_3_Testing\\UberApp_Team3\\msedgedriver.exe");
-        EdgeOptions options = new EdgeOptions();
-        driver2 = new EdgeDriver(options);
+//        System.setProperty("webdriver.edge.driver", "C:\\Users\\pc\\Desktop\\GIT\\Uber_Team_3_Testing\\UberApp_Team3\\msedgedriver.exe");
+//        EdgeOptions options = new EdgeOptions();
+        driver2 = new ChromeDriver();
 
         driver = new ChromeDriver();
 
@@ -35,5 +35,6 @@ public class BaseTest {
     @AfterSuite
     public void quitDriver(){
         driver.quit();
+        driver2.quit();
     }
 }

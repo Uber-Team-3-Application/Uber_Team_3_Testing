@@ -107,7 +107,6 @@ public class PassengerPage {
         Helper.takeScreenshoot(driver, "ride_details");
         (new WebDriverWait(driver, 5))
                 .until(ExpectedConditions.visibilityOf(confirm)).click();
-        Helper.takeScreenshoot(driver, "ride_ordered");
     }
 
     public void orderARideNoDriver() {
@@ -115,7 +114,9 @@ public class PassengerPage {
             orderARide();
         } catch(UnhandledAlertException  noe) {
             Helper.takeScreenshoot(driver, "no_driver_found");
-            driver.switchTo().alert().accept();
+            Alert alert = driver.switchTo().alert();
+            alert.accept();
+            driver.navigate().refresh();
         }
     }
 
